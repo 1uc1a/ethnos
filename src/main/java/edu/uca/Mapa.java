@@ -9,6 +9,6 @@ public class Mapa {
     public void Mapa(int cantJugadores){
         PuntosRegion puntosRegion = new PuntosRegion(cantJugadores);
         mapa = new ArrayList<Region>();
-        mapa.add(new Region())
+        //mapa.add(new Region())
     }
 }

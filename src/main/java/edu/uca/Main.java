@@ -12,8 +12,11 @@ public class Main implements Runnable {
 
     @Override
     public void run() {
-        Region region = new Region(10, 20, 30, "asd", "rojo");
-        System.out.print(region);
+//        Region region = new Region(10, 20, 30, "asd", "rojo");
+//        System.out.print(region);
+        Tribus tribus = new Tribus();
+        System.out.print(tribus);
+
     }
 
 }
