@@ -20,6 +20,10 @@ public class Main implements Runnable {
     public void run() {
         Mapa mapa = new Mapa(3);
         System.out.println(mapa);
+        Mazo mazo = new Mazo();
+        mazo.shuffle();
+        System.out.println(mazo);
+        System.out.println(mazo.sacarCarta());
 
         //System.out.print(region);
     }
