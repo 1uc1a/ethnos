@@ -18,9 +18,7 @@ public class Main implements Runnable {
 
     @Override
     public void run() {
-        PuntosRegion puntosRegion = new PuntosRegion(3);
-        System.out.println(puntosRegion.asignarPuntoARegion());
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(3);
         System.out.println(mapa);
 
         //System.out.print(region);

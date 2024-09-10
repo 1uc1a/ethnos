@@ -1,14 +1,15 @@
 package edu.uca;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Collections;
 
 
 public class Mapa {
-    List<Region> mapa;
+    List<Region> mapa = new ArrayList<>();;
     PuntosRegion puntosRegion;
-    List<Integer> puntosAAsignar = new ArrayList<>();
+    LinkedList<Integer> puntosAAsignar = new LinkedList<>();
 
 
     public Mapa(int cantJugadores){
@@ -22,6 +23,9 @@ public class Mapa {
             mapa.add(new Region("Straton", "Azul", 0, 0, 0));
             mapa.add(new Region("Duris", "Violeta", 0, 0, 0));
             mapa.add(new Region("Rhea", "Rojo", 0, 0, 0));
+            for(Region region : mapa){
+                asignarPuntosMuchosJugadores(region);
+            }
 
         } else {
             mapa.add(new Region("Ithys", "Naranja", 0, 0));
@@ -40,17 +44,20 @@ public class Mapa {
         puntosAAsignar.add(puntosRegion.asignarPuntoARegion());
         puntosAAsignar.add(puntosRegion.asignarPuntoARegion());
         Collections.sort(puntosAAsignar);
-        region.setPuntaje1(puntosAAsignar.get(puntosAAsignar.getFirst()));
-        region.setPuntaje2(puntosAAsignar.get(puntosAAsignar.getLast()));
+        region.setPuntaje1(puntosAAsignar.getFirst());
+        region.setPuntaje2(puntosAAsignar.getLast());
         puntosAAsignar.clear();
     }
 
-    private void asignarPuntosMuchosJugadores(){
+    private void asignarPuntosMuchosJugadores(Region region){
         puntosAAsignar.add(puntosRegion.asignarPuntoARegion());
         puntosAAsignar.add(puntosRegion.asignarPuntoARegion());
         puntosAAsignar.add(puntosRegion.asignarPuntoARegion());
         Collections.sort(puntosAAsignar);
-
+        region.setPuntaje1(puntosAAsignar.getFirst());
+       // region.setPuntaje2(puntosAAsignar.get(1));
+        region.setPuntaje3(puntosAAsignar.getLast());
+        puntosAAsignar.clear();
     }
 
     @Override
