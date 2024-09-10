@@ -4,9 +4,11 @@ import java.util.*;
 
 public class Mazo {
     private List<Cartas> deck;
-    public Mazo() {
+    public Mazo(int flag) {
         this.deck = new ArrayList<>();
-        Inicio();
+        if (flag == 1) {
+            Inicio();
+        }
     }
 
     public void addCarta(Cartas card) {
@@ -18,22 +20,24 @@ public class Mazo {
     }
 
     public Cartas sacarCarta() {
-        if (!deck.isEmpty()) {
-            return deck.remove(0);
-        }
+            if (!deck.isEmpty()) {
+                return deck.remove(0);
+            }
+
         return null;
     }
 
     private void Inicio() {
-        String[] tribus = {"Orcos", "Merfolk", "Esqueleto", "Halfling", "Minotauros", "Magos"};
-        String[] color = {"Naranja", "Naranja", "Verde", "Verde", "Gris", "Gris", "Azul", "Azul", "Violeta", "Violeta", "Rojo", "Rojo"};
+            String[] tribus = {"Orcos", "Merfolk", "Esqueleto", "Halfling", "Minotauros", "Magos"};
+            String[] color = {"Naranja", "Naranja", "Verde", "Verde", "Gris", "Gris", "Azul", "Azul", "Violeta", "Violeta", "Rojo", "Rojo"};
 
-        for (String color_ : color) {
-            for (String tribu_ : tribus) {
-                deck.add(new Cartas(tribu_, color_));
-                deck.add(new Cartas(tribu_, color_));
+            for (String color_ : color) {
+                for (String tribu_ : tribus) {
+                    deck.add(new Cartas(tribu_, color_));
+                    deck.add(new Cartas(tribu_, color_));
+                }
             }
-        }
+
     }
 
     @Override
