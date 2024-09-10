@@ -1,10 +1,16 @@
 package edu.uca;
 
+import edu.uca.PuntosRegion;
+import java.util.ArrayList;
 import picocli.CommandLine;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
-@CommandLine.Command(name = "tienda", mixinStandardHelpOptions = true, version = "1.0",
-        description = "sistema de manejo interactivo del stock de la tienda")
+@CommandLine.Command(name = "", mixinStandardHelpOptions = true, version = "1.0",
+        description = "")
 public class Main implements Runnable {
+
 
     public static void main(String[] args) {
         new CommandLine(new Main()).execute(args);
@@ -12,8 +18,11 @@ public class Main implements Runnable {
 
     @Override
     public void run() {
-        Region region = new Region(10, 20, 30, "asd", "rojo");
-        System.out.print(region);
+        Mapa mapa = new Mapa(4);
+        System.out.println(mapa);
+
+        //System.out.print(region);
     }
+
 
 }

@@ -29,6 +29,18 @@ public class Region {
 
     @Override
     public String toString() {
-        return "Region{puntaje1=" + puntaje1 + ", puntaje2='" + puntaje2 + "', puntaje3=" + puntaje3 + "}";
+        return "Region{" + "Nombre: " + nombre + "puntaje1=" + puntaje1 + ", puntaje2='" + puntaje2 + "', puntaje3=" + puntaje3 + "}";
+    }
+
+    public void setPuntaje1(int puntaje1) {
+        this.puntaje1 = puntaje1;
+    }
+
+    public void setPuntaje2(int puntaje2) {
+        this.puntaje2 = puntaje2;
+    }
+
+    public void setPuntaje3(int puntaje3) {
+        this.puntaje3 = puntaje3;
     }
 }
