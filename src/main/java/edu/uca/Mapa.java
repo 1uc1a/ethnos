@@ -55,7 +55,7 @@ public class Mapa {
         puntosAAsignar.add(puntosRegion.asignarPuntoARegion());
         Collections.sort(puntosAAsignar);
         region.setPuntaje1(puntosAAsignar.getFirst());
-       // region.setPuntaje2(puntosAAsignar.get(1));
+        region.setPuntaje2(puntosAAsignar.get(1));
         region.setPuntaje3(puntosAAsignar.getLast());
         puntosAAsignar.clear();
     }

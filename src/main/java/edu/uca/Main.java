@@ -18,7 +18,7 @@ public class Main implements Runnable {
 
     @Override
     public void run() {
-        Mapa mapa = new Mapa(3);
+        Mapa mapa = new Mapa(4);
         System.out.println(mapa);
 
         //System.out.print(region);
