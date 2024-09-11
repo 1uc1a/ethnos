@@ -18,7 +18,7 @@ public class Cartas {
 
     @Override
     public String toString() {
-        return "Carta{" + tribu + ", " + color + "}";
+        return "[" + tribu + ", " + color + "]";
     }
 
 }
