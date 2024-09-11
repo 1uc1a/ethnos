@@ -14,4 +14,13 @@ public class Jugadores {
         this.bandasJugadas = bandasJugadas;
         this.fichasMapa = fichasMapa;
     }
+
+    public void anadirCarta(Cartas carta) {
+        mano.add(carta);
+    }
+
+    @Override
+    public String toString() {
+        return "MazoJugador=" + mano;
+    }
 }

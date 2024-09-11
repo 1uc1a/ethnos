@@ -11,4 +11,14 @@ public class Cartas {
         this.color = color;
     }
 
+    public Cartas(String tribu, String color) {
+        this.tribu = tribu;
+        this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return "[" + tribu + ", " + color + "]";
+    }
+
 }
