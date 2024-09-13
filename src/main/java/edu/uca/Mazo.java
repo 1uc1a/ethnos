@@ -3,7 +3,7 @@ package edu.uca;
 import java.util.*;
 
 public class Mazo {
-    private List<Cartas> deck;
+    private List<Carta> deck;
 
     public Mazo(int flag) {
         this.deck = new ArrayList<>();
@@ -12,7 +12,7 @@ public class Mazo {
         }
     }
 
-    public void addCarta(Cartas card) {
+    public void addCarta(Carta card) {
         deck.add(card);
     }
 
@@ -20,7 +20,7 @@ public class Mazo {
         Collections.shuffle(deck);
     }
 
-    public Cartas sacarCarta() {
+    public Carta sacarCarta() {
         if (!deck.isEmpty()) {
             return deck.remove(0);
         }
@@ -33,7 +33,7 @@ public class Mazo {
     }
 
     // Method to get a specific card by index
-    public Cartas get(int index) {
+    public Carta get(int index) {
         if (index >= 0 && index < deck.size()) {
             return deck.get(index);
         }
@@ -41,7 +41,7 @@ public class Mazo {
     }
 
     // Method to remove a specific card by index from the deck
-    public Cartas remover(int index) {
+    public Carta remover(int index) {
         if (index >= 0 && index < deck.size()) {
             return deck.remove(index);
         }
@@ -54,8 +54,8 @@ public class Mazo {
 
         for (String color_ : color) {
             for (String tribu_ : tribus) {
-                deck.add(new Cartas(tribu_, color_));
-                deck.add(new Cartas(tribu_, color_));
+                deck.add(new Carta(tribu_, color_));
+                deck.add(new Carta(tribu_, color_));
             }
         }
     }

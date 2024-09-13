@@ -1,10 +1,8 @@
 package edu.uca;
 
-import edu.uca.PuntosRegion;
 import java.util.ArrayList;
 import picocli.CommandLine;
-import java.util.Arrays;
-import java.util.Collections;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,15 +20,15 @@ public class Main implements Runnable {
     public void run() {
         Mazo frente = new Mazo(0);
         List<Jugadores> jugadoresList = new ArrayList<>();
-        List<Bandas> bandasList = new ArrayList<>();
+        List<Banda> bandaList = new ArrayList<>();
 
         System.out.println("Ingrese cant jugadores");
         int cant = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < cant; i++) {
-            List<Cartas> cartas = new ArrayList<>();
+            List<Carta> cartas = new ArrayList<>();
             Jugadores jugador = new Jugadores(cartas, 0, 0, 0);
             jugadoresList.add(jugador);
-            bandasList.add(new Bandas());
+            bandaList.add(new Banda());
         }
 
         Mapa mapa = new Mapa(cant);
@@ -46,7 +44,7 @@ public class Main implements Runnable {
         while (true) {
             for (int i = 0; i < jugadoresList.size(); i++) {
                 Jugadores jugador_ = jugadoresList.get(i);
-                Bandas bandas_ = bandasList.get(i);
+                Banda banda_ = bandaList.get(i);
 
                 System.out.println(jugadoresList);
                 System.out.println(jugador_);
@@ -69,20 +67,21 @@ public class Main implements Runnable {
                         int index = Integer.parseInt(scanner.nextLine());
 
                         if (index >= 0 && index < frente.size()) {
-                            Cartas cartaSeleccionada = frente.get(index);
+                            Carta cartaSeleccionada = frente.get(index);
                             frente.remover(index);
                             jugador_.anadirCarta(cartaSeleccionada);
                             System.out.println("Carta seleccionada: " + cartaSeleccionada);
                         } else {
                             System.out.println("Índice fuera de rango. Intente nuevamente.");
                         }
+                        break;
                     case 3:
                         System.out.println("Seleccione la carta que desea usar para formar una banda (0 a " + (jugador_.getCartas().size() - 1) + "):");
                         int cartaIndex = Integer.parseInt(scanner.nextLine());
 
                         if (cartaIndex >= 0 && cartaIndex < jugador_.getCartas().size()) {
-                            Cartas cartaUsar = jugador_.getCartas().get(cartaIndex);
-                            boolean bandaFormada = bandas_.formarBanda(jugador_.getCartas(), cartaUsar);
+                            Carta cartaUsar = jugador_.getCartas().get(cartaIndex);
+                            boolean bandaFormada = banda_.formarBanda(jugador_.getCartas(), cartaUsar);
                             if (bandaFormada) {
                                 System.out.println("Banda formada con éxito!");
                             } else {
@@ -94,11 +93,11 @@ public class Main implements Runnable {
                         break;
                     case 4:
                         System.out.println("Bandas jugadas por el jugador:");
-                        System.out.println(bandas_);
+                        System.out.println(banda_);
                         break;
                     case 5:
                         System.out.println("Posibles Bandas:");
-                        System.out.println(bandas_.obtenerBandasPosibles(jugador_.getCartas()));
+                        System.out.println(banda_.obtenerBandasPosibles(jugador_.getCartas()));
                         break;
                     case 6:
                         System.out.println("Saliendo...");
