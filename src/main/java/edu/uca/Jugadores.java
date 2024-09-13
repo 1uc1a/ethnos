@@ -19,6 +19,10 @@ public class Jugadores {
         mano.add(carta);
     }
 
+    public List<Cartas> getCartas(){
+        return mano;
+    }
+
     @Override
     public String toString() {
         return "MazoJugador=" + mano;
