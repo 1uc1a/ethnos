@@ -22,6 +22,7 @@ public class Main implements Runnable {
     public void run() {
         Mazo frente = new Mazo(0);
         List<Jugadores> jugadoresList = new ArrayList<>();
+        List<Bandas> bandasList = new ArrayList<>();
 
         System.out.println("Ingrese cant jugadores");
         int cant = Integer.parseInt(scanner.nextLine());
@@ -29,36 +30,40 @@ public class Main implements Runnable {
             List<Cartas> cartas = new ArrayList<>();
             Jugadores jugador = new Jugadores(cartas, 0, 0, 0);
             jugadoresList.add(jugador);
+            bandasList.add(new Bandas());
         }
 
         Mapa mapa = new Mapa(cant);
         System.out.println(mapa);
 
         Mazo mazo = new Mazo(1);
-
         mazo.shuffle();
+
         for (int j = 0; j < cant*2; j++){
             frente.addCarta(mazo.sacarCarta());
         }
+
         while (true) {
-            for (Jugadores jugador_ : jugadoresList) {
+            for (int i = 0; i < jugadoresList.size(); i++) {
+                Jugadores jugador_ = jugadoresList.get(i);
+                Bandas bandas_ = bandasList.get(i);
+
                 System.out.println(jugadoresList);
                 System.out.println(jugador_);
                 System.out.println("Deck frente");
                 System.out.println(frente);
-                System.out.println("Que queres hacer");
+                System.out.println("Que queres hacer?");
                 System.out.println("1. Sacar carta mazo");
                 System.out.println("2. Sacar carta frente");
-                System.out.println("3. Salir");
+                System.out.println("3. Formar banda");
+                System.out.println("4. Ver bandas formadas");
+                System.out.println("5. Salir");
 
                 int choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         jugador_.anadirCarta(mazo.sacarCarta());
                         continue;
-                    case 3:
-                        System.out.println("Saliendo...");
-                        return;
                     case 2:
                         System.out.println("Ingrese el índice de la carta que quiere sacar del frente (0 a " + (frente.size() - 1) + "):");
                         int index = Integer.parseInt(scanner.nextLine());
@@ -71,9 +76,32 @@ public class Main implements Runnable {
                         } else {
                             System.out.println("Índice fuera de rango. Intente nuevamente.");
                         }
+                    case 3:
+                        System.out.println("Seleccione la carta que desea usar para formar una banda (0 a " + (jugador_.getCartas().size() - 1) + "):");
+                        int cartaIndex = Integer.parseInt(scanner.nextLine());
+
+                        if (cartaIndex >= 0 && cartaIndex < jugador_.getCartas().size()) {
+                            Cartas cartaUsar = jugador_.getCartas().get(cartaIndex);
+                            boolean bandaFormada = bandas_.formarBanda(jugador_.getCartas(), cartaUsar);
+                            if (bandaFormada) {
+                                System.out.println("Banda formada con éxito!");
+                            } else {
+                                System.out.println("No se pudo formar una banda.");
+                            }
+                        } else {
+                            System.out.println("Índice fuera de rango. Intente nuevamente.");
+                        }
+                        break;
+                    case 4:
+                        System.out.println("Bandas jugadas por el jugador:");
+                        System.out.println(bandas_);
+                        break;
+                    case 5:
+                        System.out.println("Saliendo...");
+                        return;
                     default:
                         System.out.println("Opción inválida, intente nuevamente.");
-                }
+
             }
         }
 
