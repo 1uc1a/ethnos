@@ -39,7 +39,7 @@ public class Main implements Runnable {
         Mazo mazo = new Mazo(1);
         mazo.shuffle();
 
-        for (int j = 0; j < cant*2; j++){
+        for (int j = 0; j < cant * 2; j++) {
             frente.addCarta(mazo.sacarCarta());
         }
 
@@ -97,21 +97,22 @@ public class Main implements Runnable {
                         System.out.println(bandas_);
                         break;
                     case 5:
+                        System.out.println("Posibles Bandas:");
+                        System.out.println(bandas_.obtenerBandasPosibles(jugador_.getCartas()));
+                        break;
+                    case 6:
                         System.out.println("Saliendo...");
                         return;
                     default:
                         System.out.println("Opción inválida, intente nuevamente.");
 
+                }
             }
+
+
+            //System.out.print(region);
         }
 
 
-
-
-
-
-        //System.out.print(region);
     }
-
-
 }

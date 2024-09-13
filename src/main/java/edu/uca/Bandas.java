@@ -19,17 +19,17 @@ public class Bandas {
 
         // Revisar si las cartas del jugador tienen el mismo personaje o color que la nueva carta
         for (Cartas carta : cartasJugador) {
-            if (carta.tribu.equals(nuevaCarta.tribu) || carta.color.equals(nuevaCarta.color)) {
+            if (carta != nuevaCarta && (carta.tribu.equals(nuevaCarta.tribu) || carta.color.equals(nuevaCarta.color))) {
                 banda.add(carta);
             }
         }
 
         // Si se puede formar una banda válida (al menos dos cartas), se añade a las bandas jugadas
-        if (banda.size() > 1) {
+        if (banda.size() >= 1) {
             bandasJugadas.add(banda);
             cartasJugador.removeAll(banda); // Eliminar cartas de la mano del jugador
             return true; // Banda formada exitosamente
-        }
+        //}
 
         return false; // No se pudo formar una banda
     }
@@ -48,14 +48,14 @@ public class Bandas {
                         bandaPorTribu.add(otraCarta);
                     }
                 }
-                if (bandaPorTribu.size() > 1) {
+                if (bandaPorTribu.size() >= 1) {
                     posiblesBandas.add(bandaPorTribu);
                 }
                 procesadas.add(carta.tribu);
             }
         }
 
-        procesadas.clear();
+        //procesadas.clear();
 
         // Agrupar cartas por color
         for (Cartas carta : cartasJugador) {
@@ -66,9 +66,9 @@ public class Bandas {
                         bandaPorColor.add(otraCarta);
                     }
                 }
-                if (bandaPorColor.size() > 1) {
+                //if (bandaPorColor.size() > 1) {
                     posiblesBandas.add(bandaPorColor);
-                }
+                //}
                 procesadas.add(carta.color);
             }
         }
