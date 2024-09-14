@@ -8,6 +8,7 @@ public class Region {
     private String nombre;
     private String color;
 
+
     public Region(String nombre, String color, int puntaje1,int puntaje2) {
         this.nombre = nombre;
         this.color = color;
