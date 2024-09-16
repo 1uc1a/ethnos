@@ -26,7 +26,7 @@ public class Main implements Runnable {
         int cant = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < cant; i++) {
             List<Carta> cartas = new ArrayList<>();
-            Jugadores jugador = new Jugadores(cartas, 0, 0, 0);
+            Jugadores jugador = new Jugadores(cartas, 0, 0);
             jugadoresList.add(jugador);
             bandaList.add(new Banda());
         }
