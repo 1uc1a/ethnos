@@ -81,12 +81,12 @@ public class Main implements Runnable {
 
                         if (cartaIndex >= 0 && cartaIndex < jugador_.getCartas().size()) {
                             Carta cartaUsar = jugador_.getCartas().get(cartaIndex);
-                            boolean bandaFormada = banda_.formarBanda(jugador_.getCartas(), cartaUsar);
-                            if (bandaFormada) {
-                                System.out.println("Banda formada con éxito!");
-                            } else {
-                                System.out.println("No se pudo formar una banda.");
-                            }
+//                            boolean bandaFormada = banda.formarBanda(jugador_.getCartas(), cartaUsar);
+//                            if (bandaFormada) {
+//                                System.out.println("Banda formada con éxito!");
+//                            } else {
+//                                System.out.println("No se pudo formar una banda.");
+//                            }
                         } else {
                             System.out.println("Índice fuera de rango. Intente nuevamente.");
                         }

@@ -76,14 +76,14 @@ public class Banda {
         return posiblesBandas;
     }
 
-    // Obtener todas las bandas jugadas
-    public List<List<Carta>> getBandasJugadas() {
-        return bandasJugadas;
-    }
+        // Obtener todas las bandas jugadas
+        public List<List<Carta>> getBandasJugadas () {
+            return bandasJugadas;
+        }
 
-    @Override
-    public String toString() {
-        return "Bandas jugadas: " + bandasJugadas;
+        @Override
+        public String toString () {
+            return "Bandas jugadas: " + bandasJugadas;
+        }
     }
-}
 
