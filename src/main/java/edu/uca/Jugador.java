@@ -2,13 +2,13 @@ package edu.uca;
 
 import java.util.List;
 
-public class Jugadores {
+public class Jugador {
     List<Carta> mano;
     int puntaje;
     int bandasJugadas;
     int fichasMapa;
 
-    public Jugadores(List<Carta> mano, int puntaje, int bandasJugadas, int fichasMapa) {
+    public Jugador(List<Carta> mano, int puntaje, int bandasJugadas, int fichasMapa) {
         this.mano = mano;
         this.puntaje = puntaje;
         this.bandasJugadas = bandasJugadas;
@@ -25,6 +25,6 @@ public class Jugadores {
 
     @Override
     public String toString() {
-        return "MazoJugador=" + mano;
+        return "ManoJugador=" + mano;
     }
 }

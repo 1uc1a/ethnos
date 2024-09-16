@@ -19,14 +19,14 @@ public class Main implements Runnable {
     @Override
     public void run() {
         Mazo frente = new Mazo(0);
-        List<Jugadores> jugadoresList = new ArrayList<>();
+        List<Jugador> jugadoresList = new ArrayList<>();
         List<Banda> bandaList = new ArrayList<>();
 
         System.out.println("Ingrese cant jugadores");
         int cant = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < cant; i++) {
             List<Carta> cartas = new ArrayList<>();
-            Jugadores jugador = new Jugadores(cartas, 0, 0, 0);
+            Jugador jugador = new Jugador(cartas, 0, 0, 0);
             jugadoresList.add(jugador);
             bandaList.add(new Banda());
         }
@@ -43,7 +43,7 @@ public class Main implements Runnable {
 
         while (true) {
             for (int i = 0; i < jugadoresList.size(); i++) {
-                Jugadores jugador_ = jugadoresList.get(i);
+                Jugador jugador_ = jugadoresList.get(i);
                 Banda banda_ = bandaList.get(i);
 
                 System.out.println(jugadoresList);
