@@ -1,12 +1,16 @@
 package edu.uca;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Region {
     private int puntaje1;
     private int puntaje2;
     private int puntaje3;
     private String nombre;
     private String color;
+    private Map<String, Integer> fichas = new HashMap<>();
 
 
     public Region(String nombre, String color, int puntaje1,int puntaje2) {
@@ -43,5 +47,13 @@ public class Region {
 
     public void setPuntaje3(int puntaje3) {
         this.puntaje3 = puntaje3;
+    }
+
+    public void colocarFichas(Jugador jugador){
+        if(fichas.containsKey(jugador.getNombre())){
+            fichas.compute(jugador.getNombre(), (k, fichasQueTeniaElJugador) -> fichasQueTeniaElJugador + 1);
+        } else {
+            fichas.put(jugador.getNombre(), 1);
+        }
     }
 }
