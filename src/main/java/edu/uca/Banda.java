@@ -12,7 +12,7 @@ public class Banda {
         this.bandasJugadas = new ArrayList<>();
     }
 
-    //     Método para formar una banda de cartas con el mismo personaje o color
+    // Método para formar una banda de cartas con el mismo personaje o color
     public boolean formarBanda(List<Carta> cartaJugador, Carta nuevaCarta) {
         List<Carta> banda = new ArrayList<>();
         banda.add(nuevaCarta);
@@ -29,10 +29,9 @@ public class Banda {
             bandasJugadas.add(banda);
             cartaJugador.removeAll(banda); // Eliminar cartas de la mano del jugador
             return true; // Banda formada exitosamente
-            //}
-
-            return false; // No se pudo formar una banda
         }
+
+        return false; // No se pudo formar una banda
     }
 
     // Método para obtener todas las posibles bandas que se pueden formar
@@ -42,17 +41,17 @@ public class Banda {
 
         // Agrupar cartas por tribu (personaje)
         for (Carta carta : cartaJugador) {
-            if (!procesadas.contains(carta.tribu)) {
+            if (!procesadas.contains(carta.tribu.toString())) {
                 List<Carta> bandaPorTribu = new ArrayList<>();
                 for (Carta otraCarta : cartaJugador) {
                     if (otraCarta.tribu.equals(carta.tribu)) {
                         bandaPorTribu.add(otraCarta);
                     }
                 }
-                if (!bandaPorTribu.isEmpty()) {
+                if (bandaPorTribu.size() >= 1) {
                     posiblesBandas.add(bandaPorTribu);
                 }
-                procesadas.add(carta.tribu);
+                procesadas.add(carta.tribu.toString());
             }
         }
 
@@ -60,32 +59,31 @@ public class Banda {
 
         // Agrupar cartas por color
         for (Carta carta : cartaJugador) {
-            if (!procesadas.contains(carta.color)) {
+            if (!procesadas.contains(carta.color.toString())) {
                 List<Carta> bandaPorColor = new ArrayList<>();
                 for (Carta otraCarta : cartaJugador) {
                     if (otraCarta.color.equals(carta.color)) {
                         bandaPorColor.add(otraCarta);
                     }
                 }
-                //if (bandaPorColor.size() > 1) {
-                posiblesBandas.add(bandaPorColor);
-                //}
-                procesadas.add(carta.color);
+                if (bandaPorColor.size() >= 1) {
+                    posiblesBandas.add(bandaPorColor);
+                }
+                procesadas.add(carta.color.toString());
             }
         }
 
         return posiblesBandas;
     }
 
-    // Obtener todas las bandas jugadas
-    public List<List<Carta>> getBandasJugadas() {
-        return bandasJugadas;
-    }
+        // Obtener todas las bandas jugadas
+        public List<List<Carta>> getBandasJugadas () {
+            return bandasJugadas;
+        }
 
-    @Override
-    public String toString() {
-        return "Bandas jugadas: " + bandasJugadas;
+        @Override
+        public String toString () {
+            return "Bandas jugadas: " + bandasJugadas;
+        }
     }
-}
-
 

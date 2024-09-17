@@ -49,7 +49,7 @@ public class Region {
         this.puntaje3 = puntaje3;
     }
 
-    public void colocarFichas(Jugadores jugador){
+    public void colocarFichas(Jugador jugador){
         if(fichas.containsKey(jugador.getNombre())){
             fichas.compute(jugador.getNombre(), (k, fichasQueTeniaElJugador) -> fichasQueTeniaElJugador + 1);
         } else {
