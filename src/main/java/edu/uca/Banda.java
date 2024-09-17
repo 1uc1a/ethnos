@@ -41,7 +41,7 @@ public class Banda {
 
         // Agrupar cartas por tribu (personaje)
         for (Carta carta : cartaJugador) {
-            if (!procesadas.contains(carta.tribu)) {
+            if (!procesadas.contains(carta.tribu.toString())) {
                 List<Carta> bandaPorTribu = new ArrayList<>();
                 for (Carta otraCarta : cartaJugador) {
                     if (otraCarta.tribu.equals(carta.tribu)) {
@@ -51,7 +51,7 @@ public class Banda {
                 if (bandaPorTribu.size() >= 1) {
                     posiblesBandas.add(bandaPorTribu);
                 }
-                procesadas.add(carta.tribu);
+                procesadas.add(carta.tribu.toString());
             }
         }
 
@@ -59,7 +59,7 @@ public class Banda {
 
         // Agrupar cartas por color
         for (Carta carta : cartaJugador) {
-            if (!procesadas.contains(carta.color)) {
+            if (!procesadas.contains(carta.color.toString())) {
                 List<Carta> bandaPorColor = new ArrayList<>();
                 for (Carta otraCarta : cartaJugador) {
                     if (otraCarta.color.equals(carta.color)) {
@@ -69,7 +69,7 @@ public class Banda {
                 if (bandaPorColor.size() >= 1) {
                     posiblesBandas.add(bandaPorColor);
                 }
-                procesadas.add(carta.color);
+                procesadas.add(carta.color.toString());
             }
         }
 

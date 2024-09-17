@@ -3,13 +3,9 @@ package edu.uca;
 import java.util.*;
 
 public class Mazo {
-    private List<Carta> deck;
+    private List<Carta> deck = new ArrayList<>();
 
-    public Mazo(int flag) {
-        this.deck = new ArrayList<>();
-        if (flag == 1) {
-            Inicio();
-        }
+    public Mazo() {
     }
 
     public void addCarta(Carta card) {
@@ -48,7 +44,7 @@ public class Mazo {
         return null; // Return null if the index is invalid
     }
 
-    private void Inicio() {
+    public void inicio() {
         List<Tribu> tribus = new ArrayList<>(Arrays.asList(Tribu.values()));
         tribus.remove(Tribu.Dragon);
         tribus.remove(Tribu.Esqueleto);

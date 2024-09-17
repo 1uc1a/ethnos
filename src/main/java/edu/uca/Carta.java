@@ -2,7 +2,6 @@ package edu.uca;
 
 public class Carta {
     Tribu tribu;
-    String region;
     Color color;
 
     public Carta(Tribu tribu, Color color) {
