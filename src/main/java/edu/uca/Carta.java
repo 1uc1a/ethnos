@@ -9,6 +9,14 @@ public class Carta {
         this.color = color;
     }
 
+    public Tribu getTribu() {
+        return tribu;
+    }
+
+    public String getColor() {
+        return String.valueOf(color);
+    }
+
     @Override
     public String toString() {
         return "[" + tribu + ", " + color + "]";

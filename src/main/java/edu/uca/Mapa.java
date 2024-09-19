@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Mapa {
@@ -60,9 +62,26 @@ public class Mapa {
         puntosAAsignar.clear();
     }
 
+    public Region getRegionByColor(String color) {
+        for (Region region : mapa) {
+            if (region.getColor().equals(color)) {
+                return region;
+            }
+        }
+        return null;
+    }
+
+    public Map<String, Map<String, Integer>> getFichasDeTodasLasRegiones() {
+        Map<String, Map<String, Integer>> fichasPorRegion = new HashMap<>();
+        for (Region region : mapa) {
+            fichasPorRegion.put(region.getNombre(), region.getFichas());
+        }
+        return fichasPorRegion;
+    }
+
     @Override
     public String toString() {
-        return "Mapa=" + mapa;
+        return "" + mapa;
     }
 }
 

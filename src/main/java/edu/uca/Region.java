@@ -34,7 +34,11 @@ public class Region {
 
     @Override
     public String toString() {
-        return "Region{" + "Nombre: " + nombre + "puntaje1=" + puntaje1 + ", puntaje2='" + puntaje2 + "', puntaje3=" + puntaje3 + "}";
+        return "Nombre: " + nombre + ", " + "color=" + color + ", " + "puntaje1= " + puntaje1 + ", " + "puntaje2=" + puntaje2 + ", " + "puntaje3=" +  puntaje3 + "\n";
+    }
+
+    public String getColor() {
+        return color;
     }
 
     public void setPuntaje1(int puntaje1) {
@@ -49,11 +53,27 @@ public class Region {
         this.puntaje3 = puntaje3;
     }
 
-    public void colocarFichas(Jugador jugador){
-        if(fichas.containsKey(jugador.getNombre())){
-            fichas.compute(jugador.getNombre(), (k, fichasQueTeniaElJugador) -> fichasQueTeniaElJugador + 1);
-        } else {
-            fichas.put(jugador.getNombre(), 1);
-        }
+    //public void colocarFichas(Jugador jugador){
+    //    if(fichas.containsKey(jugador.getNombre())){
+    //        fichas.compute(jugador.getNombre(), (k, fichasQueTeniaElJugador) -> fichasQueTeniaElJugador + 1);
+    //    } else {
+    //        fichas.put(jugador.getNombre(), 1);
+    //    }
+    //}
+
+    public void colocarFichas(String jugadorNombre) {
+        fichas.put(jugadorNombre, fichas.getOrDefault(jugadorNombre, 0) + 1);
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Map<String, Integer> getFichas() {
+        return fichas;
+    }
+
+    public int getFichasDeJugador(String nombre) {
+        return fichas.getOrDefault(nombre, 0);
     }
 }
