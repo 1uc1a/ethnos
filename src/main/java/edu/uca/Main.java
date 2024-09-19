@@ -54,12 +54,11 @@ public class Main implements Runnable {
                     System.out.println("Que queres hacer " + jugador_.getNombre() + "?");
                     System.out.println("1. Sacar carta mazo");
                     System.out.println("2. Sacar carta frente");
-                    System.out.println("3. Formar banda");
-                    System.out.println("4. Ver bandas formadas");
-                    System.out.println("5. Ver posibles bandas");
-                    System.out.println("6. Ver mano");
-                    System.out.println("7. Ver mapa");
-                    System.out.println("8. Salir");
+                    System.out.println("3. Ver bandas formadas");
+                    System.out.println("4. Ver posibles bandas");
+                    System.out.println("5. Ver mano");
+                    System.out.println("6. Ver mapa");
+                    System.out.println("7. Salir");
 
                     int choice = Integer.parseInt(scanner.nextLine());
 
@@ -90,23 +89,21 @@ public class Main implements Runnable {
                             }
                             break;
                         case 3:
-                            break;
-                        case 4:
                             System.out.println("Bandas jugadas por el jugador:");
                             jugador_.mostrarBandasJugadas();
                             break;
-                        case 5:
+                        case 4:
                             System.out.println("Posibles Bandas:");
                             endTurn = jugador_.seleccionarYJugarBanda(banda, mapa);
                             break;
-                        case 6:
+                        case 5:
                             System.out.println("Mano de " + jugador_.getNombre() + jugador_.getCartas());
                             break;
-                        case 7:
+                        case 6:
                             System.out.println(mapa);
                             System.out.println(mapa.getFichasDeTodasLasRegiones());
                             break;
-                        case 8:
+                        case 7:
                             System.out.println("Saliendo");
                             return;
                         default:

@@ -1,9 +1,6 @@
 package edu.uca;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Banda {
     private List<List<Carta>> bandasJugadas;
@@ -31,44 +28,67 @@ public class Banda {
         return false;
     }
 
-    public List<List<Carta>> obtenerBandasPosibles(List<Carta> cartaJugador) {
-        List<List<Carta>> posiblesBandas = new ArrayList<>();
-        Set<Carta> procesadas = new HashSet<>();
+    public List<List<Carta>> obtenerBandasPosibles(List<Carta> cartas) {
+        Map<String, Set<Carta>> colorGroups = new HashMap<>();
+        Map<String, Set<Carta>> tribeGroups = new HashMap<>();
 
-        for (Carta carta : cartaJugador) {
-            if (!procesadas.contains(carta)) {
-                List<Carta> bandaPorTribu = new ArrayList<>();
-                bandaPorTribu.add(carta);
-                for (Carta otraCarta : cartaJugador) {
-                    if (otraCarta != carta && otraCarta.tribu.equals(carta.tribu)) {
-                        bandaPorTribu.add(otraCarta);
-                    }
+        // Group cards by color and tribe using Set to avoid duplicates
+        for (Carta carta : cartas) {
+            String color = carta.getColor();
+            String tribe = String.valueOf(carta.getTribu());
+
+            colorGroups.putIfAbsent(color, new HashSet<>());
+            colorGroups.get(color).add(carta);
+
+            tribeGroups.putIfAbsent(tribe, new HashSet<>());
+            tribeGroups.get(tribe).add(carta);
+        }
+
+        List<List<Carta>> posiblesBandas = new ArrayList<>();
+
+        for (Set<Carta> colorGroup : colorGroups.values()) {
+            for (Carta carta : colorGroup) {
+                if (!containsBand(posiblesBandas, Collections.singletonList(carta))) {
+                    posiblesBandas.add(Collections.singletonList(carta));
                 }
-                if (!bandaPorTribu.isEmpty()) {
-                    posiblesBandas.add(bandaPorTribu);
+            }
+
+            if (colorGroup.size() > 1) {
+                List<Carta> bandaColor = new ArrayList<>(colorGroup);
+                if (!containsBand(posiblesBandas, bandaColor)) {
+                    posiblesBandas.add(bandaColor);
                 }
-                procesadas.addAll(bandaPorTribu);
             }
         }
 
-        for (Carta carta : cartaJugador) {
-            if (!procesadas.contains(carta)) {
-                List<Carta> bandaPorColor = new ArrayList<>();
-                bandaPorColor.add(carta);
-                for (Carta otraCarta : cartaJugador) {
-                    if (otraCarta != carta && otraCarta.color.equals(carta.color)) {
-                        bandaPorColor.add(otraCarta);
-                    }
+        for (Set<Carta> tribeGroup : tribeGroups.values()) {
+            for (Carta carta : tribeGroup) {
+                if (!containsBand(posiblesBandas, Collections.singletonList(carta))) {
+                    posiblesBandas.add(Collections.singletonList(carta));
                 }
-                if (!bandaPorColor.isEmpty()) {
-                    posiblesBandas.add(bandaPorColor);
+            }
+
+            if (tribeGroup.size() > 1) {
+                List<Carta> bandaTribu = new ArrayList<>(tribeGroup);
+                if (!containsBand(posiblesBandas, bandaTribu)) {
+                    posiblesBandas.add(bandaTribu);
                 }
-                procesadas.addAll(bandaPorColor);
             }
         }
 
         return posiblesBandas;
     }
+
+    private boolean containsBand(List<List<Carta>> posiblesBandas, List<Carta> banda) {
+        for (List<Carta> existingBanda : posiblesBandas) {
+            if (existingBanda.containsAll(banda) && banda.containsAll(existingBanda)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 
     public List<List<Carta>> getBandasJugadas() {
         return bandasJugadas;
