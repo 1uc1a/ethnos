@@ -23,25 +23,8 @@ public class Mazo {
         return null;
     }
 
-    // Method to get the number of cards in the deck
     public int size() {
         return deck.size();
-    }
-
-    // Method to get a specific card by index
-    public Carta get(int index) {
-        if (index >= 0 && index < deck.size()) {
-            return deck.get(index);
-        }
-        return null; // Return null if the index is invalid
-    }
-
-    // Method to remove a specific card by index from the deck
-    public Carta remover(int index) {
-        if (index >= 0 && index < deck.size()) {
-            return deck.remove(index);
-        }
-        return null; // Return null if the index is invalid
     }
 
     public void inicio() {
@@ -81,16 +64,13 @@ public class Mazo {
         int size = list.size();
         int midpoint = size / 2;
 
-        // Manejar casos en los que la lista tiene un número impar de elementos
         if (size % 2 != 0) {
-            midpoint += 1;  // Incluye el elemento del medio en la primera mitad
+            midpoint += 1;
         }
 
-        // Dividir la lista en dos partes
         List<T> firstHalf = new ArrayList<>(list.subList(0, midpoint));
         List<T> secondHalf = new ArrayList<>(list.subList(midpoint, size));
 
-        // Crear una lista de listas para devolver
         List<List<T>> result = new ArrayList<>();
         result.add(firstHalf);
         result.add(secondHalf);
