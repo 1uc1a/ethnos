@@ -32,7 +32,6 @@ public class Banda {
         Map<String, Set<Carta>> colorGroups = new HashMap<>();
         Map<String, Set<Carta>> tribeGroups = new HashMap<>();
 
-        // Group cards by color and tribe using Set to avoid duplicates
         for (Carta carta : cartas) {
             String color = carta.getColor();
             String tribe = String.valueOf(carta.getTribu());

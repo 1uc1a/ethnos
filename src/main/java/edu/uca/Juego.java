@@ -88,8 +88,10 @@ public class Juego {
                                     }
 
                                     Carta nueva_Carta = mazo.sacarCarta();
+                                    System.out.println(nueva_Carta);
                                     jugador_.anadirCarta(nueva_Carta);
                                 } else {
+                                    System.out.println("Carta sacada:" + cartaJugada);
                                     jugador_.anadirCarta(cartaJugada);
                                 }
                                 endTurn = true;
